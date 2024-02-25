@@ -1,0 +1,136 @@
+# NULL VALUE COLUMNS
++-----------------------------+
+|order_delivered_customer_date|
++-----------------------------+
+|                           22|
++-----------------------------+
+
+
++-------------------------+------------------------+
+|mean_order_products_value|mean_order_freight_value|
++-------------------------+------------------------+
+|                   128.53|                    21.3|
++-------------------------+------------------------+
+
+# per order status count
++------------+-----+
+|order_status|count|
++------------+-----+
+|     shipped|   11|
+|   delivered|  946|
+|    canceled|    3|
+|  processing|    1|
+|    invoiced|    1|
++------------+-----+
+
+DataFrame[count(DISTINCT customer_state): bigint]
++--------------+-----+
+| customer_city|count|
++--------------+-----+
+|     sao paulo|  147|
+|rio de janeiro|   71|
+|      brasilia|   24|
+|belo horizonte|   21|
+|      curitiba|   19|
++--------------+-----+
+
+# delivered and cancelled percentage
++------------+----------------------+
+|order_status|order_quantity_percent|
++------------+----------------------+
+|   delivered|     98.33679833679834|
+|    canceled|   0.31185031185031187|
++------------+----------------------+
+
+# per city order cost
++-------------------+----------+
+|      customer_city|order_cost|
++-------------------+----------+
+|          sao paulo|  16417.65|
+|     rio de janeiro|  11329.36|
+|     belo horizonte|   3614.87|
+|           brasilia|   2209.92|
+|           curitiba|   2155.93|
+|            diadema|    1458.9|
+|          cabo frio|   1440.93|
+|        santo andre|   1359.21|
+|        sao goncalo|   1353.09|
+|            limeira|   1286.45|
+|sao lourenco do sul|    1200.0|
+|       porto alegre|   1196.49|
+|            chapeco|    1194.0|
+|      montes claros|   1180.47|
+|     ribeirao preto|   1173.67|
+|          fortaleza|   1135.97|
+|      florianopolis|    1107.2|
+|           campinas|   1097.32|
+|           salvador|   1077.26|
+|           sorocaba|    1019.5|
++-------------------+----------+
+
+# correlation b/w feight cost and items qty
+0.64
+
++----------------------------+----------------------------+
+|average_delivery_time (days)|average_approved_time (days)|
++----------------------------+----------------------------+
+|                        12.0|                         0.4|
++----------------------------+----------------------------+
+
++--------------------+
+|average_review_score|
++--------------------+
+|                 4.1|
++--------------------+
+
+
+# fast and slow deliveries 
++-------------------+------------------------+
+|      customer_city|delivery_time_in_seconds|
++-------------------+------------------------+
+|     rio de janeiro|                 7025940|
+|               mage|                 6537060|
+|     rio de janeiro|                 5099940|
+|          sao paulo|                 4985340|
+|         vespasiano|                 4736640|
++-------------------+------------------------+
+
++---------------+------------------------+
+|  customer_city|delivery_time_in_seconds|
++---------------+------------------------+
+|        orleans|                    2040|
+|    itapecerica|                    3960|
+|      tramandai|                   22860|
+| ribeirao preto|                   83100|
+|mogi das cruzes|                   85260|
++---------------+------------------------+
+
+
+# correlation b/w delivery time and review score 
+0.03
+
+# Store in Hive
+24/02/25 16:30:36 WARN HiveConf: HiveConf of name hive.stats.jdbc.timeout does not exist
+24/02/25 16:30:36 WARN HiveConf: HiveConf of name hive.stats.retries.wait does not exist
+24/02/25 16:30:38 WARN ObjectStore: Version information not found in metastore. hive.metastore.schema.verification is not enabled so recording the schema version 2.3.0
+24/02/25 16:30:38 WARN ObjectStore: setMetaStoreSchemaVersion called but recording version is disabled: version = 2.3.0, comment = Set by MetaStore raghavgupta@192.168.56.1
+24/02/25 16:30:38 WARN ObjectStore: Failed to get database global_temp, returning NoSuchObjectException
+24/02/25 16:30:40 WARN MemoryManager: Total allocation exceeds 95.00% (1,020,054,720 bytes) of heap memory
+Scaling row group sizes to 95.00% for 8 writers
+24/02/25 16:30:40 WARN MemoryManager: Total allocation exceeds 95.00% (1,020,054,720 bytes) of heap memory
+Scaling row group sizes to 84.44% for 9 writers
+24/02/25 16:30:40 WARN MemoryManager: Total allocation exceeds 95.00% (1,020,054,720 bytes) of heap memory
+Scaling row group sizes to 76.00% for 10 writers
+24/02/25 16:30:40 WARN MemoryManager: Total allocation exceeds 95.00% (1,020,054,720 bytes) of heap memory
+Scaling row group sizes to 69.09% for 11 writers
+24/02/25 16:30:40 WARN MemoryManager: Total allocation exceeds 95.00% (1,020,054,720 bytes) of heap memory
+Scaling row group sizes to 63.33% for 12 writers
+24/02/25 16:30:41 WARN MemoryManager: Total allocation exceeds 95.00% (1,020,054,720 bytes) of heap memory
+Scaling row group sizes to 69.09% for 11 writers
+24/02/25 16:30:41 WARN MemoryManager: Total allocation exceeds 95.00% (1,020,054,720 bytes) of heap memory
+Scaling row group sizes to 76.00% for 10 writers
+24/02/25 16:30:41 WARN MemoryManager: Total allocation exceeds 95.00% (1,020,054,720 bytes) of heap memory
+Scaling row group sizes to 84.44% for 9 writers
+24/02/25 16:30:41 WARN MemoryManager: Total allocation exceeds 95.00% (1,020,054,720 bytes) of heap memory
+Scaling row group sizes to 95.00% for 8 writers
+24/02/25 16:30:41 WARN SessionState: METASTORE_FILTER_HOOK will be ignored, since hive.security.authorization.manager is set to instance of HiveAuthorizerFactory.
